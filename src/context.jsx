@@ -21,6 +21,7 @@ const CartProvider = ({ children }) => {
   const changeQuantity = (changeObj) => {
     dispatch({ type: "CHANGE_QUANTITY", payload: changeObj });
   };
+  // const cart = state?.cart ? state.cart : [];
   useEffect(() => {
     dispatch({ type: "GET_TOTALS" });
   }, [state.cart]);
