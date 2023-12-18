@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useEffect } from "react";
 import cartItems from "./data";
 import reducer from "./reducer";
 const CartContext = createContext();
@@ -21,6 +21,9 @@ const CartProvider = ({ children }) => {
   const changeQuantity = (changeObj) => {
     dispatch({ type: "CHANGE_QUANTITY", payload: changeObj });
   };
+  useEffect(() => {
+    dispatch({ type: "GET_TOTALS" });
+  }, [state.cart]);
   return (
     <CartContext.Provider
       value={{ ...state, clearCart, remove, changeQuantity }}
